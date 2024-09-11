@@ -55,7 +55,22 @@ export const addEvent = async (req, res) => {
   }
 };
 
-export const getEvents = async (req, res) => {};
+export const getAllEvents = async (req, res) => {
+    const { id, role } = req.user;
+    if (role !== "user") {
+        return res
+            .status(401)
+            .json({ message: "You are not authorized to get events" });
+    }
+    try{
+        const events = await Event.find();
+        return res.status(200).json({ message: "Events fetched successfully", events });
+    }catch(error){
+        console.error("Error in getting events", error);
+        return res.status(500).json({ message: "Error in getting events" });
+    }
+    
+};
 
 export const updateEvent = async (req, res) => {};
 
