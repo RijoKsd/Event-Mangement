@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import bannerBg from "../../assets/banner.jpg"
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  const {isLoggedIn} = useSelector(state => state.auth);
+  console.log(isLoggedIn)
   return (
     <div
       className="hero min-h-screen"
       style={{
-        backgroundImage:  `url(${bannerBg})`,
+        backgroundImage:`url(${bannerBg})`,
           
       }}
     >
@@ -23,10 +26,14 @@ export default function Home() {
             Join thousands of event creators and enthusiasts. Create, explore,
             and connect — your next exciting adventure starts here!
           </p>
-          <Link to="/events" className="btn btn-primary">
+          <Link to={ 
+            isLoggedIn ? "/auth/events" : "/events"
+          } className="btn btn-primary">
             Explore Events
           </Link>
-          <Link to="/create-event" className="btn btn-secondary ml-4">
+          <Link to={
+            isLoggedIn ? "/auth/create-event" : "/login"
+          } className="btn btn-secondary ml-4">
             Host an Event
           </Link>
         </div>

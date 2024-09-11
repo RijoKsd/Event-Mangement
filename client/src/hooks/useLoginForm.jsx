@@ -39,7 +39,7 @@ const useLoginForm = () => {
       if(result.role === "admin") {
         navigate("/admin");
       } else {
-        navigate("/auth/events");
+        navigate("/auth");
       }
       
     } catch (error) {
