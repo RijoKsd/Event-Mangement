@@ -8,7 +8,8 @@ import UserLayout from "./Layout/user";
 import MyEvents from "./pages/user/MyEvents.jsx";
 import CreateEvent from "./pages/user/CreateEvent.jsx";
 import AdminLayout from "./Layout/admin";
-import Dashboard from "./pages/user/admin/Dashboard.jsx";
+import Dashboard from "./pages/admin/Dashboard.jsx";
+import UpdateEventForm from "./components/admin/UpdateEventForm.jsx";
  
 const router = createBrowserRouter([
     { 
@@ -28,15 +29,17 @@ const router = createBrowserRouter([
             {path: "", element: <Home />},
             {path: "events",  element: <Event />},
             {path: "my-events", element: <MyEvents />},
+            {path: 'event/:eventId', element: <UpdateEventForm />},
+               
             {path: "create-event", element: <CreateEvent />},
+            
         ]
     },{
         path: "/admin",
         element: <AdminLayout />,
         children: [
             {path: "dashboard", element: <Dashboard />},
-            // {path: "users", element: <Users />},
-            // {path: "turfs", element: <Turfs />},
+          
         ]
     }
 

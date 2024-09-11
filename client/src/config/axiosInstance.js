@@ -22,8 +22,6 @@ axiosInstance.interceptors.request.use((config) => {
 
   
    if (token) {
-      console.log(token, "token");
-
     config.headers.Authorization = `Bearer ${token}`;
   }  
 

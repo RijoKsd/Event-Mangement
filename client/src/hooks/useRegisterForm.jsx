@@ -39,8 +39,7 @@ const useRegisterForm = () => {
   
 
   const onSubmit = async (data) => {
-    console.log("Form submitted:", data);
-    try {
+     try {
       const response = await axiosInstance.post("/api/auth/register", data);
       const result = await response.data;
       dispatch(login(result));

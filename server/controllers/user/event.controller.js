@@ -85,7 +85,34 @@ export const getEventOfUser = async (req, res) => {
   }
 };
 
-export const updateEvent = async (req, res) => {};
+export const updateEventById = async (req, res) => {
+  const { id } = req.user;
+  const { eventId } = req.params;
+  const { title, description, date, time, venue, price, category } = req.body;
+  try {
+    const event = await Event.findById({ _id: eventId, user: id });
+    if (!event) {
+      return res.status(400).json({ message: "Event not found" });
+    }
+    const updatedEvent = await Event.findByIdAndUpdate(
+      eventId,
+      {
+        title,
+        description,
+        date: new Date(date),
+        time,
+        venue,
+        price,
+        category,
+      },
+      { new: true }
+    );
+    return res.status(200).json({ message: "Event updated successfully", event: updatedEvent });
+  } catch (error) {
+    console.error("Error in updating event", error);
+    return res.status(500).json({ message: "Error in updating event" });
+  }
+};
 
 export const deleteEvent = async (req, res) => {
   console.log('req.params', req.params)
@@ -106,4 +133,19 @@ export const deleteEvent = async (req, res) => {
  
 
 
+};
+
+export const getEventById = async (req, res) => {
+  const { id } = req.user;
+  const { eventId } = req.params;
+  try {
+    const event = await Event.findById({ _id: eventId, user: id });
+    if (!event) {
+      return res.status(400).json({ message: "Event not found" });
+    }
+    return res.status(200).json({ message: "Event fetched successfully", event });
+  } catch (error) {
+    console.error("Error in getting event", error);
+    return res.status(500).json({ message: "Error in getting event" });
+  }
 };
