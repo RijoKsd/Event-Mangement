@@ -44,6 +44,9 @@ export const login = async(req, res) => {
         if(!user) {
             return res.status(400).json({ message: "Invalid email" });
         }
+        if(user.status === "removed"){
+            return res.status(400).json({ message: "User is removed by admin" });
+        }
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
         if(!isPasswordCorrect) {
             return res.status(400).json({ message: "Incorrect password" });

@@ -27,10 +27,14 @@ export const addEvent = async (req, res) => {
     return res.status(400).json({ message: "Please fill all the fields" });
   }
 
+  
   try {
     const user = await User.findById(id);
     if (!user) {
       return res.status(400).json({ message: "User not found" });
+    }
+    if(user.status === "suspended" || user.status === "removed"){
+      return res.status(400).json( {message: "User is suspended or removed by admin"});
     }
 
     const imageUrl = await cloudinary.uploader.upload(image.path, {
