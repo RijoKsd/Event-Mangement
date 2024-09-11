@@ -15,6 +15,6 @@ const eventRouter = express.Router();
  eventRouter.get("/all", getAllEvents);
  eventRouter.get("/user", authMiddleware, getEventOfUser);
  eventRouter.put("/update", authMiddleware, updateEvent);
- eventRouter.delete("/delete", authMiddleware, deleteEvent);
+ eventRouter.delete("/delete/:eventId", authMiddleware, deleteEvent);
 
 export default eventRouter;

@@ -87,4 +87,23 @@ export const getEventOfUser = async (req, res) => {
 
 export const updateEvent = async (req, res) => {};
 
-export const deleteEvent = async (req, res) => {};
+export const deleteEvent = async (req, res) => {
+  console.log('req.params', req.params)
+  const { id } = req.user;
+ const {eventId} = req.params;
+  try {
+    const event = await Event.findById({ _id: eventId , user: id });
+    if (!event) {
+      return res.status(400).json({ message: "Event not found" });
+    }
+   await Event.findByIdAndDelete(eventId);
+   const events = await Event.find({ user: id });
+    return res.status(200).json({ message: "Event deleted successfully", events });
+  } catch (error) {
+    console.error("Error in deleting event", error);
+    return res.status(500).json({ message: "Error in deleting event" });
+  }
+ 
+
+
+};

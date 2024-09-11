@@ -7,7 +7,6 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use((config) => {
   let token = null;
-  console.log(token, "token")
   try {
     const persistedUser = localStorage.getItem("persist:user");
     if (persistedUser) {
@@ -20,7 +19,11 @@ axiosInstance.interceptors.request.use((config) => {
   } catch (error) {
     console.error("Error parsing persisted user data:", error);
   }
+
+  
    if (token) {
+      console.log(token, "token");
+
     config.headers.Authorization = `Bearer ${token}`;
   }  
 
