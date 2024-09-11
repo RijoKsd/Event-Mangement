@@ -10,6 +10,7 @@ import CreateEvent from "./pages/user/CreateEvent.jsx";
 import AdminLayout from "./Layout/admin";
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import UpdateEventForm from "./components/admin/UpdateEventForm.jsx";
+import UserManagement from "./pages/admin/UserManagement.jsx";
  
 const router = createBrowserRouter([
     { 
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
         element: <AdminLayout />,
         children: [
             {path: "", element: <Dashboard />},
-            {path: "users", element: <h1> users</h1>},
+            {path: "users", element: <UserManagement />},
             { path: "events", element: <h1> events</h1>},
           
         ]
