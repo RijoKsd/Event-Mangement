@@ -1,4 +1,4 @@
- import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -28,7 +28,7 @@ const Header = () => {
             >
               <li>
                 <NavLink
-                  to="/"
+                  to="/auth"
                   className={({ isActive }) =>
                     isActive ? "text-blue-600 font-bold" : "text-gray-900"
                   }
@@ -38,7 +38,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/events"
+                  to="/auth/events"
                   className={({ isActive }) =>
                     isActive ? "text-blue-600 font-bold" : "text-gray-900"
                   }
@@ -47,7 +47,31 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                
+                <details>
+                  <summary>Manage Events</summary>
+                  <ul className="p-2">
+                    <li>
+                      <NavLink
+                        to="/auth/my-events"
+                        className={({ isActive }) =>
+                          isActive ? "text-blue-600 font-bold" : "text-gray-900"
+                        }
+                      >
+                        My Events
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/auth/create-event"
+                        className={({ isActive }) =>
+                          isActive ? "text-blue-600 font-bold" : "text-gray-900"
+                        }
+                      >
+                        Create Event
+                      </NavLink>
+                    </li>
+                  </ul>
+                </details>
               </li>
             </ul>
           </div>
@@ -59,7 +83,7 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink
-                to="/"
+                to="/auth"
                 className={({ isActive }) =>
                   isActive ? "text-yellow-300 font-bold" : "text-white"
                 }
@@ -69,7 +93,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/events"
+                to="/auth/events"
                 className={({ isActive }) =>
                   isActive ? "text-yellow-300 font-bold" : "text-white"
                 }
@@ -78,14 +102,38 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              
+              <details>
+                <summary className="text-white">Manage Event</summary>
+                <ul className="p-2">
+                  <li>
+                    <NavLink
+                      to="/auth/my-events"
+                      className={({ isActive }) =>
+                        isActive ? "text-yellow-300 font-bold" : "text-black"
+                      }
+                    >
+                      My Events
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/auth/create-event"
+                      className={({ isActive }) =>
+                        isActive ? "text-yellow-300 font-bold" : "text-black"
+                      }
+                    >
+                      Create Event
+                    </NavLink>
+                  </li>
+                </ul>
+              </details>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/signup" className="btn btn-info">
-            Signup
-          </Link>
+          <button to="/signup" className="btn btn-info">
+            Logout
+          </button>
         </div>
       </div>
     </header>

@@ -25,8 +25,7 @@ const useLoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
-  } = useForm({
+   } = useForm({
     resolver: yupResolver(loginSchema),
   });
 
@@ -41,7 +40,7 @@ const useLoginForm = () => {
       if(result.role === "admin") {
         navigate("/admin");
       } else {
-        navigate("/events");
+        navigate("/auth/events");
       }
       
     } catch (error) {

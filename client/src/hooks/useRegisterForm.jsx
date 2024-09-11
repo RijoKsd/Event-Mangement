@@ -4,6 +4,7 @@ import * as yup from "yup";
 import axiosInstance from "../config/axiosInstance";
 import { useDispatch } from "react-redux";
 import { login } from "../store/slices/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const registerSchema = yup.object().shape({
   name: yup
@@ -26,6 +27,7 @@ const registerSchema = yup.object().shape({
 
 const useRegisterForm = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -42,7 +44,11 @@ const useRegisterForm = () => {
       const response = await axiosInstance.post("/api/auth/register", data);
       const result = await response.data;
       dispatch(login(result));
-      
+        if (result.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/auth/events");
+        }
  
       ;
     } catch (error) {
