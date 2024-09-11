@@ -1,5 +1,8 @@
-const EventCard = ({ event, auth = null }) => {
- const {isLoggedIn, role, token}  = auth;
+const EventCard = ({ event, auth  }) => {
+  const isLoggedIn = auth?.isLoggedIn;
+  const role = auth?.role;
+  console.log(role, "role")
+  console.log(isLoggedIn, "isLoggedIn")
   
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
@@ -21,7 +24,7 @@ const EventCard = ({ event, auth = null }) => {
             <strong>Time:</strong> {event.time}
           </p>
           <p>
-            <strong>Location:</strong> {event.location}
+            <strong>Location:</strong> {event.venue}
           </p>
         </div>
 

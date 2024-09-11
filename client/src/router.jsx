@@ -6,7 +6,8 @@ import Register from "./components/common/Register.jsx";
 import UserLayout from "./Layout/user";
  import Event from "./pages/user/Event.jsx";
 import MyEvents from "./pages/user/MyEvents.jsx";
-
+import CreateEvent from "./pages/user/CreateEvent.jsx";
+ 
 const router = createBrowserRouter([
     { 
         path: "/",
@@ -20,11 +21,12 @@ const router = createBrowserRouter([
         ]
     },{
         path: "/auth",
-        element: <UserLayout />,
+        element:  <UserLayout /> ,
         children: [
             {path: "", element: <Home />},
             {path: "events",  element: <Event />},
             {path: "my-events", element: <MyEvents />},
+            {path: "create-event", element: <CreateEvent />},
         ]
     }
      

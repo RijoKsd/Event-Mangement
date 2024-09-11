@@ -4,6 +4,7 @@ import { useProductContext } from "../../context/ProductContext";
 import { useSelector } from "react-redux";
 export default function MyEvents() {
   const auth = useSelector((state) => state.auth);
+  console.log(auth, "auth");
   const { fetchUserEvents, userEvents } = useProductContext();
  
   useEffect(() => {

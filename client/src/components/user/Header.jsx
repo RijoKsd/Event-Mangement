@@ -1,6 +1,14 @@
-import { Link, NavLink } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import {logout} from "../../store/slices/authSlice" 
 const Header = () => {
+  const dispatch  = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout() );
+    navigate("/");
+  };
   return (
     <header className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg md:px-5">
       <div className="navbar text-white">
@@ -48,7 +56,7 @@ const Header = () => {
               </li>
               <li>
                 <details>
-                  <summary>Manage Events</summary>
+                  <summary className="text-gray-900">Manage Event</summary>
                   <ul className="p-2">
                     <li>
                       <NavLink
@@ -131,7 +139,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <button to="/signup" className="btn btn-info">
+          <button onClick={handleLogout} className="btn btn-info">
             Logout
           </button>
         </div>

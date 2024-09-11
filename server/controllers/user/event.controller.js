@@ -4,13 +4,16 @@ import cloudinary from "../../helper/cloudinary.js";
 
 export const addEvent = async (req, res) => {
   const { id, role } = req.user;
-  const image = req.file.path;
+
   if (role !== "user") {
     return res
       .status(401)
       .json({ message: "You are not authorized to add event" });
   }
+
   const { title, description, date, time, venue, price, category } = req.body;
+  const image = req.file;
+
   if (
     !title ||
     !description ||
@@ -23,14 +26,14 @@ export const addEvent = async (req, res) => {
   ) {
     return res.status(400).json({ message: "Please fill all the fields" });
   }
-  console.log(req.body, "req.body");
+
   try {
     const user = await User.findById(id);
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
 
-    const imageUrl = await cloudinary.uploader.upload(image, {
+    const imageUrl = await cloudinary.uploader.upload(image.path, {
       folder: "event-management",
     });
 
@@ -38,16 +41,18 @@ export const addEvent = async (req, res) => {
       user: id,
       title,
       description,
-      date: new Date(),
+      date: new Date(date),
       time,
       venue,
       image: imageUrl.secure_url,
       price,
       category,
     });
+
     await newEvent.save();
     return res.status(201).json({
       message: "Event added successfully",
+      event: newEvent,
     });
   } catch (error) {
     console.error("Error in adding event", error);
@@ -67,8 +72,7 @@ export const getAllEvents = async (req, res) => {
 };
 
 export const getEventOfUser = async (req, res) => {
-  console.log('rijo')
-  const { id } = req.user;
+   const { id } = req.user;
   try {
     const events= await Event.find({ user: id });
     if (!events) {
