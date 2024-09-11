@@ -25,7 +25,7 @@ export const register = async(req, res) => {
         });
         await newUser.save();
         const token = generateJwtToken(newUser);
-        return res.status(201).json({ message: "User registered successfully", token });
+        return res.status(201).json({ message: "User registered successfully", token, role: newUser.role });
     
     } catch (error) {
         console.error("Error in registering user", error);
@@ -49,7 +49,7 @@ export const login = async(req, res) => {
             return res.status(400).json({ message: "Incorrect password" });
         }
         const token = generateJwtToken(user);
-        return res.status(200).json({ message: "Login successful", token });
+        return res.status(200).json({ message: "Login successful", token, role: user.role });
         
     } catch (error) {
         console.error("Error in login", error);
