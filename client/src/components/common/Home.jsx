@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function Home() {
   const {isLoggedIn} = useSelector(state => state.auth);
-  console.log(isLoggedIn)
-  return (
+   return (
     <div
       className="hero min-h-screen"
       style={{
