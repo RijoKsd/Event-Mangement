@@ -12,6 +12,7 @@ import Dashboard from "./pages/admin/Dashboard.jsx";
 import UpdateEventForm from "./components/admin/UpdateEventForm.jsx";
 import UserManagement from "./pages/admin/UserManagement.jsx";
 import EventList from "./pages/admin/EventList.jsx";
+import AdminDashboard from "./pages/admin/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <AdminLayout />,
     children: [
-      { path: "", element: <Dashboard /> },
+      { path: "", element: <AdminDashboard /> },
       { path: "users", element: <UserManagement /> },
       { path: "events", element: <EventList /> },
     ],

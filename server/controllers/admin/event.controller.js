@@ -1,6 +1,5 @@
 import Event from "../../models/event.model.js";
-import User from "../../models/user.model.js";
-
+ 
 
 export const getAllEvents = async (req, res) => {
   const {  role } = req.user;
