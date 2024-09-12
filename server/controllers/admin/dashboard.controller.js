@@ -12,7 +12,7 @@ export const getDashboardData = async (req, res) => {
 
   try {
     const events = await Event.countDocuments();
-    const activeUsers = await User.countDocuments({ status: "active" });
+    const activeUsers = await User.countDocuments({ status: "active", role:"user" });
     const suspendedUsers = await User.countDocuments({ status: "suspended" });
     const removedUsers = await User.countDocuments({ status: "removed" });
 

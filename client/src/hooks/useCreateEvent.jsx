@@ -11,7 +11,10 @@ const schema = yup.object().shape({
   date: yup.date().required("Date is required"),
   time: yup.string().required("Time is required"),
   venue: yup.string().required("Venue is required"),
-  image: yup.mixed().required("Image is required"),
+  image: yup.mixed().test("required", "Image is required", (value) => {
+    return value && value.length > 0;
+  }),
+
   price: yup
     .number()
     .positive("Price must be positive")
