@@ -8,6 +8,7 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
+import { MdEventNote } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/slices/authSlice";
 
@@ -34,7 +35,7 @@ const AdminSidebar = () => {
       label: "Admin Dashboard",
     },
     { path: "/admin/users", icon: FaUsers, label: "View Users" },
-    { path: "/admin/events", icon: FaFutbol, label: "View Events" },
+    { path: "/admin/events", icon: MdEventNote, label: "View Events" },
   ];
 
   const SidebarContent = () => (

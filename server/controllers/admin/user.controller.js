@@ -9,11 +9,11 @@ export const getAllUsers = async (req, res) => {
       .json({ message: "You are not authorized to add event" });
   }
   try {
-    const users = await User.find();
+    const users = await User.find({ role: "user"});
     res.status(200).json(users);
   } catch (error) { 
     console.error("Error getting all users", error);
-    res.status(500).json({ message: "Error getting all users" });
+    res.status(500).json({ message: "Error getting all users"});
   }
 };
 

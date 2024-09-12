@@ -11,7 +11,7 @@ export const getAllEvents = async (req, res) => {
       .json({ message: "You are not authorized to add event" });
   }
   try {
-    const events = await Event.find();
+    const events = await Event.find().populate("user", "name");
     return res.status(200).json({ message: "Events fetched successfully", events });
   } catch (error) {
     console.error("Error in getting events", error);
