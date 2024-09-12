@@ -98,12 +98,10 @@ EventSphere is a comprehensive event management platform built with modern web t
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
 
-This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-Rijo K S D - [GitHub](https://github.com/RijoKsd)
+Rijo Sebastian - [GitHub](https://github.com/RijoKsd)
 
 Project Link: [https://github.com/RijoKsd/Event-Mangement](https://github.com/RijoKsd/Event-Mangement)
