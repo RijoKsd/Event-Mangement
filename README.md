@@ -65,7 +65,7 @@ EventSphere is a comprehensive event management platform built with modern web t
 
    # In a new terminal, start frontend
    cd client
-   npm start
+   npm run dev
    ```
 
 5. Open your browser and navigate to `http://localhost:3000`
