@@ -5,6 +5,7 @@ import axiosInstance from "../config/axiosInstance";
 import { useDispatch } from "react-redux";
 import { login } from "../store/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import toast  from "react-hot-toast";
 
 
 // Define the login schema
@@ -41,10 +42,14 @@ const useLoginForm = () => {
       } else {
         navigate("/auth");
       }
+      toast.success(result.message)
       
     } catch (error) {
-      console.error("Login failed:", error.message);
-      throw error;
+      if(error?.response?.data?.message) {
+        toast.error(error.response.data.message);
+      }else{
+        toast.error("Something went wrong");
+      }
     }
   };
    

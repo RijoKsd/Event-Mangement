@@ -5,6 +5,7 @@ import axiosInstance from "../config/axiosInstance";
 import { useDispatch } from "react-redux";
 import { login } from "../store/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const registerSchema = yup.object().shape({
   name: yup
@@ -40,20 +41,22 @@ const useRegisterForm = () => {
 
   const onSubmit = async (data) => {
      try {
-      const response = await axiosInstance.post("/api/auth/register", data);
-      const result = await response.data;
-      dispatch(login(result));
-        if (result.role === "admin") {
-          navigate("/admin");
-        } else {
-          navigate("/auth");
-        }
- 
-      ;
-    } catch (error) {
-      console.error("Registration failed:", error.message);
-      throw error;
-    }
+       const response = await axiosInstance.post("/api/auth/register", data);
+       const result = await response.data;
+       dispatch(login(result));
+       if (result.role === "admin") {
+         navigate("/admin");
+       } else {
+         navigate("/auth");
+       }
+       toast.success(result.message);
+     } catch (error) {
+       if (error?.response?.data?.message) {
+         toast.error(error.response.data.message);
+       } else {
+         toast.error("Something went wrong");
+       }
+     }
   };
 
   return {
