@@ -4,7 +4,7 @@
 
 EventSphere is a comprehensive event management platform built with modern web technologies. It allows users to create, delete, and view events, while providing administrators with user management capabilities.
 
-![EventSphere Dashboard](https://via.placeholder.com/800x400.png?text=EventSphere+Dashboard)
+![EventSphere Dashboard](https://github.com/RijoKsd/Event-Mangement/blob/main/images/home.png)
 
 ## Features
 
@@ -75,23 +75,24 @@ EventSphere is a comprehensive event management platform built with modern web t
 ### User Features
 
 1. **Sign Up / Log In**: Create a new account or log in to an existing one.
-   ![User Authentication](https://via.placeholder.com/600x300.png?text=User+Authentication)
+   ![User Authentication](https://github.com/RijoKsd/Event-Mangement/blob/main/images/login.png)
 
 2. **Create Event**: Fill in event details and upload an image.
-   ![Create Event](https://via.placeholder.com/600x300.png?text=Create+Event)
+   ![Create Event](https://github.com/RijoKsd/Event-Mangement/blob/main/images/create-event.png)
 
-3. **View Events**: Browse through your events and events created by others.
-   ![Event List](https://via.placeholder.com/600x300.png?text=Event+List)
+3. **All Events**: Browse through your events and events created by others.
+   ![Event List](https://github.com/RijoKsd/Event-Mangement/blob/main/images/events.png)
 
-4. **Delete Event**: Remove events you've created.
+4. **My Event**:  Logged user Events.
+   ![My Event](https://github.com/RijoKsd/Event-Mangement/blob/main/images/my-events.png)
 
 ### Admin Features
 
 1. **User Management**: View all users, suspend, remove, or activate user accounts.
-   ![Admin Dashboard](https://via.placeholder.com/600x300.png?text=Admin+Dashboard)
+   ![Admin Dashboard](https://github.com/RijoKsd/Event-Mangement/blob/main/images/user-management.png)
 
 2. **Analytics**: View graphs and statistics about events and users.
-   ![Admin Analytics](https://via.placeholder.com/600x300.png?text=Admin+Analytics)
+   ![Admin Analytics](https://github.com/RijoKsd/Event-Mangement/blob/main/images/dashboard.png)
 
 ## Contributing
 
